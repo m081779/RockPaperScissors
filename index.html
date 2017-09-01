@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+
+  <style> 
+
+  body, html {
+    margin: 0;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    background-image: url('ep_naturalwhite.png');		
+    font-family: Helvetica;
+    color: rgba(0,0,0, 0.8);
+  }
+
+  #main-header{
+  	border-bottom: 2px solid black;
+  	display: inline-block;
+  }
+
+  span {
+  	background-color: gray;
+  	color: #fff;
+  	font-size: 28px;
+  	padding: 5px 15px;
+  	border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+    .tie {
+      background-color: gray;
+    }
+
+    .win {
+      background-color: blue;
+    }
+
+    .loss {
+      background-color: red;
+
+    }
+
+    #win-text {
+      display: inline-block;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="game">
+    
+    <h1 id="main-header">Rock paper scissors</h1>
+
+    <h2>To play, press 'R' for Rock, 'P' for Paper, and 'S' for scissors.</h2>
+
+    <h3>The user's choice is: <span id="userchoice"></span></h3>
+
+    <h3>The computer's choice is: <span id="computerchoice"></span></h3>
+
+    <h3>Wins: <span id="wins"></span></h3>
+    <h3>Losses: <span id="losses"></span></h3>
+    <h3>Ties: <span id="ties"></span></h3>
+
+    <h1 id="win-text"></h1>
+
+  </div>
+
+  <script type="text/javascript">
+
+ var computerChoices = ["r", "p", "s"];
+
+ var wins = 0;
+ var losses = 0;
+ var ties = 0;
+
+  // This function is run whenever the user presses a key.
+  document.onkeyup = function(event) {
+
+  // Determines which key was pressed.
+  userGuess = event.key;
+  userGuess = userGuess.toLowerCase();
+  
+  // Randomly chooses a choice from the options array. This is the Computer's guess.
+  var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+  
+
+  document.getElementById('userchoice').innerHTML = userGuess;
+  document.getElementById('computerchoice').innerHTML = computerGuess;
+  var winText = document.getElementById('win-text');
+ 
+
+         
+         
+
+
+    if (userGuess===computerGuess) {
+      console.log("It's a tie!");
+      ties+=1;
+      document.getElementById('ties').innerHTML = ties;
+      winText.removeAttribute("class");
+      winText.innerHTML = 'It\'s a tie!  Try again...';  
+      winText.classList.add('tie');
+
+    }
+
+    if (userGuess==='r') {
+      
+        if (computerGuess==='p') {
+          console.log("computer wins!");
+          losses+=1;
+          document.getElementById('losses').innerHTML = losses;
+          winText.removeAttribute("class");
+      winText.innerHTML = 'You Lose! Try again...';  
+      winText.classList.add('loss');
+
+
+        }
+
+        else if (computerGuess==='s') {
+          console.log('user wins!');
+          wins+=1;
+          document.getElementById('wins').innerHTML = wins;
+          winText.removeAttribute("class");
+      winText.innerHTML = 'Winner Winner, Chicken Dinner!';  
+      winText.classList.add('win');
+        }
+    }
+
+    else if (userGuess==='p') {
+
+        if (computerGuess==='s') {
+          console.log("computer wins!");
+          losses+=1;
+          document.getElementById('losses').innerHTML = losses;
+          winText.removeAttribute("class");
+      winText.innerHTML = 'You Lose! Try again...';  
+      winText.classList.add('loss');
+
+
+        }
+
+        else if (computerGuess==='r') {
+          console.log('user wins!');
+          wins+=1;
+          document.getElementById('wins').innerHTML = wins;
+          winText.removeAttribute("class");
+      winText.innerHTML = 'Winner Winner, Chicken Dinner';  
+      winText.classList.add('win');
+        }
+    } 
+
+    else if (userGuess==="s") {
+
+        if (computerGuess==='r') {
+          console.log("computer wins!");
+          losses+=1;
+          document.getElementById('losses').innerHTML = losses;
+          winText.removeAttribute("class");
+      winText.innerHTML = 'You Lose! Try again...';  
+      winText.classList.add('loss');
+
+
+        }
+
+        else if (computerGuess==='p') {
+          console.log('user wins!');
+          wins+=1;
+          document.getElementById('wins').innerHTML = wins;
+          winText.removeAttribute("class");
+      winText.innerHTML = 'Winner Winner, Chicken Dinner';  
+      winText.classList.add('win');
+        }
+    }
+
+
+    };  
+
+    
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+   
+  </script>
+
+</body>
+
+</html>
